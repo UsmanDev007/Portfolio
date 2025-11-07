@@ -28,19 +28,21 @@ const Projects: React.FC = () => {
     },
     {
       id: 3,
-      title: "Weather Forecast App",
+      title: "Car Dealer Ship Web Application",
       description:
-        "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
+        "fully responsive car dealership web application that serves as a 24/7 virtual showroom",
       image:
-        "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://i.postimg.cc/KjSc8GHD/Screenshot-2025-11-07-194011.png",
       technologies: [
-        "React",
-        "OpenWeather API",
-        "Styled Components",
-        "Geolocation",
+        "React JS",
+        "Typescript",
+        "Strapi 5",
+        "GraphQL",
+        "Material UI",
+        "LottieFiles",
       ],
-      githubUrl: "https://github.com/UsmanDev007/weather-app",
-      liveUrl: "https://weather-forecast-pro.netlify.app",
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "https://github.com/UsmanDev007",
       category: "Web Application",
     },
     {
