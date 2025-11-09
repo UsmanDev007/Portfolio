@@ -9,7 +9,6 @@ const Skills: React.FC = () => {
         { name: 'React', level: 80, icon: '⚛️' },
         { name: 'TypeScript', level: 75, icon: '📘' },
         { name: 'JavaScript', level: 85, icon: '🟨' },
-        { name: 'Next.js', level: 70, icon: '▲' },
         { name: 'HTML5', level: 95, icon: '🔶' },
         { name: 'CSS3', level: 90, icon: '🎨' }
       ]
@@ -34,6 +33,14 @@ const Skills: React.FC = () => {
         { name: 'ESLint', level: 80, icon: '✅' },
         { name: 'Jest', level: 75, icon: '🧪' },
         { name: 'VS Code', level: 95, icon: '💻' }
+      ]
+    },
+    {
+      title: 'Backend Technologies',
+      skills: [
+        { name: 'Strapi 5', level: 80, icon: '🌐' },
+        { name: 'GrapghQL', level: 75, icon: '🪐' },
+        { name: 'Apollo Clinet/Server', level: 55, icon: '⚡' },
       ]
     }
   ];
@@ -125,7 +132,7 @@ const Skills: React.FC = () => {
               Currently exploring: Node JS, GraphQL, Docker, and Advanced Animation Libraries
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {['API Integration', 'Performance Optimization', 'Accessibility', 'Cross-Browser Compatibility', 'Mobile-First Design', 'Agile Methodology'].map((skill) => (
+              {['API Integration', 'Performance Optimization', 'Accessibility', 'Cross-Browser Compatibility', 'Mobile-First Design'].map((skill) => (
                 <span
                   key={skill}
                   className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium"

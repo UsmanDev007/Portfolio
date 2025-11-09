@@ -30,9 +30,8 @@ const Projects: React.FC = () => {
       id: 3,
       title: "Car Dealer Ship Web Application",
       description:
-        "fully responsive car dealership web application that serves as a 24/7 virtual showroom",
-      image:
-        "https://i.postimg.cc/KjSc8GHD/Screenshot-2025-11-07-194011.png",
+        "fully responsive and Dynamic car dealership web application that serves as a 24/7 virtual showroom",
+      image: "/src/assets/images/CarDealerShip.png",
       technologies: [
         "React JS",
         "Typescript",
@@ -58,33 +57,37 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: "Social Media Dashboard",
-      description:
-        "A comprehensive social media analytics dashboard with data visualization, engagement metrics, and content management.",
+      title: "Restaurant Meal Solutions Web Application",
+      description:"Developed a modern and fully responsive restaurant web application that showcases various food services such as Ready Meals, Outdoor Catering, In-House Menus, Frozen Foods, and Mobile Kitchen Ideas",
       image:
-        "https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: ["React", "D3.js", "Node.js", "Express", "MongoDB"],
-      githubUrl: "https://github.com/UsmanDev007/social-dashboard",
-      liveUrl: "https://social-analytics-pro.herokuapp.com",
-      category: "Analytics Tool",
+        "https://i.postimg.cc/V6LzhFLM/Resutarant.png",
+       technologies: [
+        "React JS",
+        "Typescript",
+        "Strapi 5",
+        "GraphQL",
+        "React-Bootstrap",
+        "LottieFiles",
+      ],
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "https://github.com/UsmanDev007",
+      category: "Web Application",
     },
     {
       id: 6,
-      title: "Learning Management System",
-      description:
-        "An educational platform with course management, progress tracking, and interactive learning modules.",
+      title: "MovieBox Web Application",
+      description:"Built a responsive movie browsing app using vanilla JavaScript and Bootstrap, enabling users to search and filter movies by genres (Action, Adventure, Thriller, Romantic, etc.), view movie details, and enjoy a mobile-friendly UI..(Hint username =usman308@gmail.com, password=movie@123)",
       image:
-        "https://images.pexels.com/photos/5553641/pexels-photo-5553641.jpeg?auto=compress&cs=tinysrgb&w=600",
-      technologies: [
-        "Next.js",
-        "Prisma",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "NextAuth",
+        "https://i.postimg.cc/yYv6Ft1c/Movie.png",
+       technologies: [
+        "JavaSript",
+        "HTML",
+        "CSS",
+        "Bootstrap",
       ],
-      githubUrl: "https://github.com/UsmanDev007/lms-platform",
-      liveUrl: "https://edulearn-platform.vercel.app",
-      category: "Educational Platform",
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "http://movie-box-ten-rose.vercel.app",
+      category: "Web Application",
     },
   ];
 

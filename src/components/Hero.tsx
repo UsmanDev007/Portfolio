@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-              Front-End Developer crafting beautiful, user-centric digital experiences with modern technologies and creative problem-solving.
+              Full Stack JavaScript (React &Strapi) Developer crafting beautiful, user-centric digital experiences with modern technologies and creative problem-solving.
             </motion.p>
 
             <motion.div

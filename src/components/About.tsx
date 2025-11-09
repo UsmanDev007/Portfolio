@@ -1,29 +1,33 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Code, Palette, Rocket, Users } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Code, Palette, Rocket, Users } from "lucide-react";
 
 const About: React.FC = () => {
   const highlights = [
     {
       icon: Code,
-      title: 'Clean Code',
-      description: 'Writing maintainable, scalable code following best practices and modern standards.'
+      title: "Clean Code",
+      description:
+        "Writing maintainable, scalable code following best practices and modern standards.",
     },
     {
       icon: Palette,
-      title: 'UI/UX Focus',
-      description: 'Creating intuitive and visually appealing interfaces that users love to interact with.'
+      title: "UI/UX Focus",
+      description:
+        "Creating intuitive and visually appealing interfaces that users love to interact with.",
     },
     {
       icon: Rocket,
-      title: 'Performance',
-      description: 'Optimizing applications for speed, accessibility, and excellent user experience.'
+      title: "Performance",
+      description:
+        "Optimizing applications for speed, accessibility, and excellent user experience.",
     },
     {
       icon: Users,
-      title: 'Collaboration',
-      description: 'Working effectively with teams, designers, and stakeholders to deliver exceptional results.'
-    }
+      title: "Collaboration",
+      description:
+        "Working effectively with teams, designers, and stakeholders to deliver exceptional results.",
+    },
   ];
 
   return (
@@ -67,20 +71,24 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              Passionate Front-End Developer
+              Passionate Full Stack JavaScript (React &Strapi) Developer
             </h3>
-            
+
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              With over 3 years of experience in front-end development, I specialize in creating 
-              modern, responsive web applications using React, TypeScript, and cutting-edge technologies. 
-              My journey began with a curiosity for how websites work, and it has evolved into a 
-              passion for crafting digital experiences that solve real-world problems.
+              Goal-focused Full Stack JavaScript (React &Strapi) Developer with
+              1 year of experience in React.js, TypeScript, and Strapi CMS.
+              Skilled in developing modern, responsive user interfaces and
+              integrating RESTful APIs for dynamic content management. Adept at
+              collaborating with teams to deliver high-quality web solutions and
+              eager to explore backend technologies such as Node.js and
+              Express.js to move toward full-stack development.
             </p>
-            
+
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I believe in the power of clean, efficient code and user-centered design. Whether 
-              working on a startup's MVP or an enterprise application, I bring the same level of 
-              dedication, attention to detail, and commitment to excellence.
+              I believe in the power of clean, efficient code and user-centered
+              design. Whether working on a startup's MVP or an enterprise
+              application, I bring the same level of dedication, attention to
+              detail, and commitment to excellence.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

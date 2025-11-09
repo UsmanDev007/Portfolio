@@ -14,7 +14,6 @@ const Contact: React.FC = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
   const onSubmit = () => {
-    // In a real application, this would send the data to a backend service
     alert('Thank you for your message! I\'ll get back to you soon.');
     reset();
   };

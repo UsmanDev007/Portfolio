@@ -10,10 +10,8 @@ import {
 
 const Resume: React.FC = () => {
   const handleDownload = () => {
-    // In a real application, this would download the actual resume file
     const link = document.createElement("a");
-    link.href = "/resume-muhammad-usman.pdf"; // This would be the actual resume file
-    link.download = "Muhammad_Usman_Resume.pdf";
+    link.href = "/src/assets/Software Developer(Resume).pdf"; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -21,7 +19,7 @@ const Resume: React.FC = () => {
 
   const experience = [
     {
-      title: "Frontend Developer",
+      title: "Full Stack JavaScript (React &Strapi) Developer",
       company: "Bloomrix",
       period: "2025 - Present",
       description:
