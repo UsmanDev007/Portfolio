@@ -40,7 +40,7 @@ const Skills: React.FC = () => {
       skills: [
         { name: 'Strapi 5', level: 80, icon: '🌐' },
         { name: 'GrapghQL', level: 75, icon: '🪐' },
-        { name: 'Apollo Clinet/Server', level: 55, icon: '⚡' },
+        { name: 'Apollo Clinet', level: 55, icon: '⚡' },
       ]
     }
   ];

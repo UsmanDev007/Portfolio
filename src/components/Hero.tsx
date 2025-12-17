@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-
+import profile from '../assets/images/profile.jpg'
 const Hero: React.FC = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-              Full Stack JavaScript (React &Strapi) Developer crafting beautiful, user-centric digital experiences with modern technologies and creative problem-solving.
+              Front-End Developer experienced in React and Strapi, specializing in building modular, scalable interfaces with a strong emphasis on performance and usability.
             </motion.p>
 
             <motion.div
@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-2xl opacity-30"
               ></motion.div>
               <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                src={profile}
                 alt="Muhammad Usman - Front-End Developer"
                 className="relative w-80 h-80 rounded-full object-cover shadow-2xl border-8 border-white dark:border-gray-700"
               />
