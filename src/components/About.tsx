@@ -71,11 +71,11 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              Passionate Full Stack JavaScript (React &Strapi) Developer
+              Front End JavaScript (React &Strapi) Developer
             </h3>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Goal-focused Full Stack JavaScript (React &Strapi) Developer with
+              Goal-focused Front End JavaScript (React &Strapi) Developer with
               1 year of experience in React.js, TypeScript, and Strapi CMS.
               Skilled in developing modern, responsive user interfaces and
               integrating RESTful APIs for dynamic content management. Adept at

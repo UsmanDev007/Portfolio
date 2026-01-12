@@ -11,7 +11,7 @@ import {
 const Resume: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/src/assets/Software Developer(Resume).pdf"; 
+    link.href = "/src/assets/ReactJS_Dev_Resume_Usman.pdf"; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -19,18 +19,18 @@ const Resume: React.FC = () => {
 
   const experience = [
     {
-      title: "Full Stack JavaScript (React &Strapi) Developer",
+      title: "Front End JavaScript (React &Strapi) Developer",
       company: "Bloomrix",
       period: "2025 - Present",
       description:
-        "Leading frontend development for enterprise applications, mentoring junior developers, and implementing best practices.",
+        "Led frontend development tasks under senior guidance, applying best practices to build scalable and maintainable web applications",
     },
     {
       title: "Frontend Developer",
       company: "AI Solution(Client)",
       period: "2024 - 2025",
       description:
-        "Developed responsive web applications using React Typescript and modern JavaScript frameworks for Indian client.",
+        "Developed responsive SmartSite Web Application using React Typescript and modern JavaScript frameworks for Indian client.",
     },
     {
       title: "React Developer Intern",
@@ -52,10 +52,12 @@ const Resume: React.FC = () => {
   ];
 
   const certifications = [
-    "React Developer Certification - DeveloperHub",
-    "Advanced JavaScript - FreeCodeCamp",
-    "Programming Competition - University level",
-    "Introduction to Frontend Development - SimpliLearn",
+    "JavaScript — The Complete Guide (Academind)",
+    "React + Redux + Next.js — Academind",
+    "Next.js: The Complete Developer’s Guide — Udemy",
+    "React.js Internship at Cane Technology",
+    "DevelopersHub.co Front End Development Internship",
+    "Introduction to Frontend Development Simplilearn Skill up"
   ];
 
   return (
@@ -225,9 +227,9 @@ const Resume: React.FC = () => {
         >
           {[
             { number: "1", label: "Years Experience" },
-            { number: "15+", label: "Projects Completed" },
+            { number: "8+", label: "Projects Completed" },
             { number: "1", label: "Happy Clients" },
-            { number: "4", label: "Certifications" },
+            { number: "6", label: "Certifications" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
