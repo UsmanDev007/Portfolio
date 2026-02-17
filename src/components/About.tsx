@@ -75,20 +75,19 @@ const About: React.FC = () => {
             </h3>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Goal-focused Front End JavaScript (React &Strapi) Developer with
-              1 year of experience in React.js, TypeScript, and Strapi CMS.
-              Skilled in developing modern, responsive user interfaces and
-              integrating RESTful APIs for dynamic content management. Adept at
-              collaborating with teams to deliver high-quality web solutions and
-              eager to explore backend technologies such as Node.js and
-              Express.js to move toward full-stack development.
-            </p>
-
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I believe in the power of clean, efficient code and user-centered
-              design. Whether working on a startup's MVP or an enterprise
-              application, I bring the same level of dedication, attention to
-              detail, and commitment to excellence.
+              Frontend React.js Developer with 1+ year of professional
+              experience building scalable, high-performance, and responsive web
+              applications using React.js, Next.js, and TypeScript. Experienced
+              in developing modular UI components, managing application state
+              with Redux Toolkit, and integrating RESTful and GraphQL APIs with
+              Strapi headless CMS. Strong focus on performance optimization,
+              accessibility (WCAG/A11y), and clean, maintainable code. Proven
+              ability to collaborate in Agile/Scrum environments, translate
+              business requirements into intuitive user interfaces, and deliver
+              production-ready frontend solutions. Driven by continuous learning
+              and growth, I am actively expanding my skills in Node.js and
+              Express.js to evolve toward a full-stack development role, while
+              maintaining a deep specialization in modern frontend engineering.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-              Front-End Developer experienced in React and Strapi, specializing in building modular, scalable interfaces with a strong emphasis on performance and usability.
+             Frontend Engineer specializing in React, Next.js, and TypeScript, with a passion for building scalable, performant, and user-focused web applications using modern UI systems, efficient state management, and headless CMS architectures.
             </motion.p>
 
             <motion.div
