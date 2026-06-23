@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-import profile from '../assets/images/profile.jpg'
 const Hero: React.FC = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -46,12 +45,12 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
+        <div className="flex flex-col items-center justify-center text-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0"
+            className="max-w-4xl text-center"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -71,14 +70,14 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
-             Frontend Engineer specializing in React, Next.js, and TypeScript, with a passion for building scalable, performant, and user-focused web applications using modern UI systems, efficient state management, and headless CMS architectures.
+             FullStack Developer with 1+ year of experience, specializing in React, Next.js, and TypeScript. Passionate about building scalable, performant, and user-focused web applications using modern UI systems, efficient state management, Prisma ORM, PostgreSQL, and MongoDB.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-4 mb-12 justify-center"
             >
               <button
                 onClick={() => scrollToSection('#projects')}
@@ -98,7 +97,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex justify-center lg:justify-start space-x-6"
+              className="flex justify-center space-x-6"
             >
               <a
                 href="https://github.com/UsmanDev007"
@@ -128,31 +127,7 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:w-1/2 flex justify-center"
-          >
-            <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-2xl opacity-30"
-              ></motion.div>
-              <img
-                src={profile}
-                alt="Muhammad Usman - Front-End Developer"
-                className="relative w-80 h-80 rounded-full object-cover shadow-2xl border-8 border-white dark:border-gray-700"
-              />
-            </div>
-          </motion.div>
+
         </div>
       </div>
 

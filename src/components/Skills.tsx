@@ -7,6 +7,7 @@ const Skills: React.FC = () => {
       title: 'Frontend Technologies',
       skills: [
         { name: 'React', level: 80, icon: '⚛️' },
+        { name: 'Next.js', level: 80, icon: '▲' },
         { name: 'TypeScript', level: 75, icon: '📘' },
         { name: 'JavaScript', level: 85, icon: '🟨' },
         { name: 'HTML5', level: 95, icon: '🔶' },
@@ -38,9 +39,13 @@ const Skills: React.FC = () => {
     {
       title: 'Backend Technologies',
       skills: [
+        { name: 'Next.js', level: 80, icon: '▲' },
         { name: 'Strapi 5', level: 80, icon: '🌐' },
-        { name: 'GrapghQL', level: 75, icon: '🪐' },
-        { name: 'Apollo Clinet', level: 55, icon: '⚡' },
+        { name: 'Prisma ORM', level: 70, icon: '💎' },
+        { name: 'PostgreSQL', level: 70, icon: '🐘' },
+        { name: 'MongoDB', level: 70, icon: '🍃' },
+        { name: 'GraphQL', level: 75, icon: '🪐' },
+        { name: 'Apollo Client', level: 55, icon: '⚡' },
       ]
     }
   ];

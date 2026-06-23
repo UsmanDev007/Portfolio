@@ -19,18 +19,25 @@ const Resume: React.FC = () => {
 
   const experience = [
     {
-      title: "Front End JavaScript (React &Strapi) Developer",
+      title: "FullStack Developer",
+      company: "SymCloud",
+      period: "2026 - Present",
+      description:
+        "Building and maintaining full-stack web applications using modern frontend and backend technologies, managing databases, APIs, and deployment workflows.",
+    },
+    {
+      title: "Front End JavaScript (React & Strapi) Developer",
       company: "Bloomrix",
-      period: "2025 - Present",
+      period: "2025 - 2026",
       description:
         "Led frontend development tasks under senior guidance, applying best practices to build scalable and maintainable web applications",
     },
     {
       title: "Frontend Developer",
-      company: "AI Solution(Client)",
+      company: "AI Solution (Client)",
       period: "2024 - 2025",
       description:
-        "Developed responsive SmartSite Web Application using React Typescript and modern JavaScript frameworks for Indian client.",
+        "Developed responsive SmartSite Web Application using React, TypeScript, and modern JavaScript frameworks for Indian client.",
     },
     {
       title: "React Developer Intern",
@@ -226,7 +233,7 @@ const Resume: React.FC = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { number: "1", label: "Years Experience" },
+            { number: "1+", label: "Years Experience" },
             { number: "8+", label: "Projects Completed" },
             { number: "1", label: "Happy Clients" },
             { number: "6", label: "Certifications" },
