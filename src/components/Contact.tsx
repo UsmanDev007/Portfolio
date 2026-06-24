@@ -22,15 +22,15 @@ const Contact: React.FC = () => {
 
     try {
       await emailjs.send(
-        'service_hiob8ow',
-        'template_8l21ubn',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: data.name,
           from_email: data.email,
           subject: data.subject,
           message: data.message,
         },
-        'uHPHR0E569c4rH7q7'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       setSubmitStatus('success');
       reset();
@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
       href: 'tel:+923086852008'
     },
     {
-      icon: MapPin,
+        icon: MapPin,
       label: 'Location',
       value: 'Rawalpindi, Pakistan',
       href: '#'
