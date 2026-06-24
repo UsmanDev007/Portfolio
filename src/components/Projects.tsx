@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, X, ArrowRight } from "lucide-react";
 import smartSite from "../assets/images/cert-site-main.png";
+import carDealerShip from "../assets/images/CarDealerShip.png";
 
 interface Project {
   id: number;
@@ -12,13 +13,36 @@ interface Project {
   githubUrl: string;
   liveUrl: string;
   staffUrl?: string;
+  portalLabels?: [string, string];
   category: string;
 }
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  
+
   const projects: Project[] = [
+    {
+      id: 9,
+      title: "MORIS",
+      description:
+        "MORIS (Multi-Outlet Retail Information System) is a comprehensive business management platform built with Next.js 15, featuring dual Owner and Admin portals. It manages retail operations including inventory with IMEI/serial tracking, point-of-sale transactions, vendor management, procurement workflows (PO to GRN), repair services, and staff management with role-based permissions. Supports hierarchical categories, province-based tax calculations, multi-currency transactions, and financial analytics.",
+      image: "https://i.postimg.cc/WzRf1cSP/722shots-so.png",
+      technologies: [
+        "Next.js 15",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma ORM",
+        "NextAuth.js",
+        "Tailwind CSS",
+        "Radix UI",
+        "Recharts",
+      ],
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "https://madmin-test.dockhost-01.symcloud.net/",
+      staffUrl: "https://moris-test.dockhost-01.symcloud.net/",
+      portalLabels: ["Admin", "Owner"],
+      category: "Business Management System",
+    },
     {
       id: 8,
       title: "TeleTaleem EMIS",
@@ -36,37 +60,10 @@ const Projects: React.FC = () => {
       githubUrl: "https://github.com/UsmanDev007",
       liveUrl: "https://emis-staging.dockhost.symcloud.net/",
       staffUrl: "https://schoolui.dockhost.symcloud.net/",
+      portalLabels: ["Admin", "Staff"],
       category: "Education Management System",
     },
-    {
-      id: 1,
-      title: "Organic Agricultural Website",
-      description:
-        "An organic farming e-commerce platform that allows users to browse fresh farm products, add them to cart, and place orders seamlessly.",
-      image: "https://i.postimg.cc/QN9tzSh1/Organic.png",
-      technologies: ["React", "MUI", "Components", "JSON"],
-      githubUrl: "https://github.com/UsmanDev007",
-      liveUrl: "https://organic-pi-umber.vercel.app/",
-      category: "Web Application",
-    },
-    {
-      id: 3,
-      title: "Car Dealership Web Application",
-      description:
-        "A fully responsive and dynamic car dealership web application that works as a 24/7 virtual showroom.",
-      image: "/src/assets/images/CarDealerShip.png",
-      technologies: [
-        "React JS",
-        "TypeScript",
-        "Strapi 5",
-        "GraphQL",
-        "Material UI",
-        "LottieFiles",
-      ],
-      githubUrl: "https://github.com/UsmanDev007",
-      liveUrl: "https://github.com/UsmanDev007",
-      category: "Web Application",
-    },
+    
     {
       id: 5,
       title: "Restaurant Meal Solutions App",
@@ -105,6 +102,36 @@ const Projects: React.FC = () => {
       liveUrl: "https://sitecert.nesterra.net/login",
       category: "Web Application",
     },
+    
+    {
+      id: 3,
+      title: "Car Dealership Web Application",
+      description:
+        "A fully responsive and dynamic car dealership web application that works as a 24/7 virtual showroom.",
+      image: carDealerShip,
+      technologies: [
+        "React JS",
+        "TypeScript",
+        "Strapi 5",
+        "GraphQL",
+        "Material UI",
+        "LottieFiles",
+      ],
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "https://github.com/UsmanDev007",
+      category: "Web Application",
+    },
+    {
+      id: 1,
+      title: "Organic Agricultural Website",
+      description:
+        "An organic farming e-commerce platform that allows users to browse fresh farm products, add them to cart, and place orders seamlessly.",
+      image: "https://i.postimg.cc/QN9tzSh1/Organic.png",
+      technologies: ["React", "MUI", "Bootstrap", "Redux"],
+      githubUrl: "https://github.com/UsmanDev007",
+      liveUrl: "https://organic-pi-umber.vercel.app/",
+      category: "Web Application",
+    },
     {
       id: 2,
       title: "Exclusive Ecommerce Website",
@@ -117,6 +144,10 @@ const Projects: React.FC = () => {
       category: "Web Application",
     },
   ];
+
+  const getPortalLabels = (project: Project): [string, string] => {
+    return project.portalLabels || ["Admin", "Staff"];
+  };
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-gray-900">
@@ -141,74 +172,96 @@ const Projects: React.FC = () => {
 
         {/* Projects Grid - 2 columns */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer"
-            >
-              {/* Full Card Background Image */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+          {projects.map((project, index) => {
+            const [primaryLabel, secondaryLabel] = getPortalLabels(project);
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer"
+              >
+                {/* Full Card Background Image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
 
-              {/* Dark Overlay (always visible, gets darker on hover) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/70" />
+                {/* Dark Overlay (always visible, gets darker on hover) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/70" />
 
-              {/* Default View - Title Only at Bottom */}
-              <div className="absolute inset-x-0 bottom-0 p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
-                <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600/80 text-white mb-3">
-                  {project.category}
-                </span>
-                <h3 className="text-2xl font-bold text-white">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Hover View - Full Content */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                {/* Top Section */}
-                <div>
-                  <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600 text-white mb-4">
+                {/* Default View - Title Only at Bottom */}
+                <div className="absolute inset-x-0 bottom-0 p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
+                  <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600/80 text-white mb-3">
                     {project.category}
                   </span>
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                  <h3 className="text-2xl font-bold text-white">
                     {project.title}
                   </h3>
-                  <p className="text-gray-200 text-sm leading-relaxed line-clamp-4">
-                    {project.description}
-                  </p>
                 </div>
 
-                {/* Bottom Section - Tech Stack + Links */}
-                <div className="space-y-4">
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs rounded-md bg-white/20 text-white backdrop-blur-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 text-xs rounded-md bg-white/20 text-white backdrop-blur-sm">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
+                {/* Hover View - Full Content */}
+                <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  {/* Top Section */}
+                  <div>
+                    <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600 text-white mb-4">
+                      {project.category}
+                    </span>
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-200 text-sm leading-relaxed line-clamp-4">
+                      {project.description}
+                    </p>
                   </div>
 
-                  {/* Links Row */}
-                  <div className="flex items-center justify-between pt-4 border-t border-white/20">
-                    <div className="flex gap-4">
-                      {project.staffUrl ? (
-                        <>
+                  {/* Bottom Section - Tech Stack + Links */}
+                  <div className="space-y-4">
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-xs rounded-md bg-white/20 text-white backdrop-blur-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-1 text-xs rounded-md bg-white/20 text-white backdrop-blur-sm">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Links Row */}
+                    <div className="flex items-center justify-between pt-4 border-t border-white/20">
+                      <div className="flex gap-4">
+                        {project.staffUrl ? (
+                          <>
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex items-center gap-1.5 text-white hover:text-blue-400 transition-colors text-sm"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <ExternalLink size={16} /> {primaryLabel}
+                            </a>
+                            <a
+                              href={project.staffUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="flex items-center gap-1.5 text-white hover:text-blue-400 transition-colors text-sm"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <ExternalLink size={16} /> {secondaryLabel}
+                            </a>
+                          </>
+                        ) : (
                           <a
                             href={project.liveUrl}
                             target="_blank"
@@ -216,52 +269,33 @@ const Projects: React.FC = () => {
                             className="flex items-center gap-1.5 text-white hover:text-blue-400 transition-colors text-sm"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <ExternalLink size={16} /> Admin
+                            <ExternalLink size={16} /> Live
                           </a>
-                          <a
-                            href={project.staffUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-1.5 text-white hover:text-blue-400 transition-colors text-sm"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink size={16} /> Staff
-                          </a>
-                        </>
-                      ) : (
+                        )}
                         <a
-                          href={project.liveUrl}
+                          href={project.githubUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex items-center gap-1.5 text-white hover:text-blue-400 transition-colors text-sm"
+                          className="flex items-center gap-1.5 text-white hover:text-gray-300 transition-colors text-sm"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <ExternalLink size={16} /> Live
+                          <Github size={16} /> Code
                         </a>
-                      )}
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center gap-1.5 text-white hover:text-gray-300 transition-colors text-sm"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Github size={16} /> Code
-                      </a>
-                    </div>
+                      </div>
 
-                    {/* Read More Button */}
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
-                    >
-                      Read More <ArrowRight size={16} />
-                    </button>
+                      {/* Read More Button */}
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
+                      >
+                        Read More <ArrowRight size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -292,7 +326,7 @@ const Projects: React.FC = () => {
                 <X size={22} />
               </button>
 
-
+             
               {/* Category Badge */}
               <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mb-3">
                 {selectedProject.category}
@@ -330,7 +364,8 @@ const Projects: React.FC = () => {
                       rel="noreferrer"
                       className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
                     >
-                      <ExternalLink size={16} /> Admin Portal
+                      <ExternalLink size={16} />{" "}
+                      {getPortalLabels(selectedProject)[0]} Portal
                     </a>
                     <a
                       href={selectedProject.staffUrl}
@@ -338,7 +373,8 @@ const Projects: React.FC = () => {
                       rel="noreferrer"
                       className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
                     >
-                      <ExternalLink size={16} /> Staff Portal
+                      <ExternalLink size={16} />{" "}
+                      {getPortalLabels(selectedProject)[1]} Portal
                     </a>
                   </>
                 ) : (

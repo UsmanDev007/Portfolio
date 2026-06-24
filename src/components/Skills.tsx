@@ -134,7 +134,7 @@ const Skills: React.FC = () => {
               Always Learning
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Currently exploring: Node JS, GraphQL, Docker, and Advanced Animation Libraries
+              Currently exploring: Docker, AWS, and Advanced Animation Libraries
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {['API Integration', 'Performance Optimization', 'Accessibility', 'Cross-Browser Compatibility', 'Mobile-First Design'].map((skill) => (

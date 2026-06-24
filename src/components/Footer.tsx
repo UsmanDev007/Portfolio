@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
               Muhammad Usman
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              Front-End Developer passionate about creating beautiful, functional web experiences. 
+              FullStack Developer passionate about creating beautiful, functional web experiences. 
               Always learning, always building, always improving.
             </p>
             <div className="flex space-x-4">
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
             <div className="space-y-2 text-gray-300">
               <p>Osman.Wad69@gmail.com</p>
               <p>03086852008</p>
-              <p>Rawalpindi,PK</p>
+              <p>Rawalpindi, Pakistan</p>
             </div>
           </motion.div>
         </div>

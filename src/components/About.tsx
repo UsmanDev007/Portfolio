@@ -71,23 +71,21 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              Front End JavaScript (React &Strapi) Developer
+              FullStack Developer
             </h3>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Frontend React.js Developer with 1+ year of professional
-              experience building scalable, high-performance, and responsive web
+              FullStack Developer with 1+ year of professional experience
+              building scalable, high-performance, and responsive web
               applications using React.js, Next.js, and TypeScript. Experienced
               in developing modular UI components, managing application state
-              with Redux Toolkit, and integrating RESTful and GraphQL APIs with
-              Strapi headless CMS. Strong focus on performance optimization,
+              with Redux Toolkit, and integrating RESTful and GraphQL APIs.
+              Proficient in backend development with Node.js, Prisma ORM,
+              PostgreSQL, and MongoDB. Strong focus on performance optimization,
               accessibility (WCAG/A11y), and clean, maintainable code. Proven
               ability to collaborate in Agile/Scrum environments, translate
               business requirements into intuitive user interfaces, and deliver
-              production-ready frontend solutions. Driven by continuous learning
-              and growth, I am actively expanding my skills in Node.js and
-              Express.js to evolve toward a full-stack development role, while
-              maintaining a deep specialization in modern frontend engineering.
+              production-ready full-stack solutions.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

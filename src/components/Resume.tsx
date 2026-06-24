@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Download,
-  FileText,
   Award,
   Briefcase,
   GraduationCap,
@@ -11,7 +10,7 @@ import {
 const Resume: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/src/assets/ReactJS_Dev_Resume_Usman.pdf"; 
+    link.href = "/src/assets/FullStack Developer.pdf"; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -23,7 +22,7 @@ const Resume: React.FC = () => {
       company: "SymCloud",
       period: "2026 - Present",
       description:
-        "Building and maintaining full-stack web applications using modern frontend and backend technologies, managing databases, APIs, and deployment workflows.",
+        "Building production-grade full-stack applications with Next.js 15, Prisma ORM, and PostgreSQL. Developed MORIS — a multi-outlet retail management system with POS, inventory tracking, procurement workflows, and role-based access control. Managing database schemas, REST APIs, authentication with NextAuth.js, and deployment pipelines.",
     },
     {
       title: "Front End JavaScript (React & Strapi) Developer",
@@ -235,7 +234,7 @@ const Resume: React.FC = () => {
           {[
             { number: "1+", label: "Years Experience" },
             { number: "8+", label: "Projects Completed" },
-            { number: "1", label: "Happy Clients" },
+            { number: "1", label: "Happy Client" },
             { number: "6", label: "Certifications" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
