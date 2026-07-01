@@ -150,8 +150,8 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-20 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -160,7 +160,7 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
@@ -170,8 +170,8 @@ const Projects: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Projects Grid - 2 columns */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Projects Grid - responsive columns */}
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
           {projects.map((project, index) => {
             const [primaryLabel, secondaryLabel] = getPortalLabels(project);
             return (
@@ -181,7 +181,8 @@ const Projects: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer w-full h-[260px] sm:h-[300px] md:h-[360px] lg:h-[400px]"
               >
                 {/* Full Card Background Image */}
                 <img
@@ -190,21 +191,36 @@ const Projects: React.FC = () => {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
-                {/* Dark Overlay (always visible, gets darker on hover) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/70" />
+                {/* Dark Overlay - desktop only */}
+                <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/70" />
 
-                {/* Default View - Title Only at Bottom */}
-                <div className="absolute inset-x-0 bottom-0 p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
+                {/* Mobile View - Minimal bottom bar */}
+                <div className="sm:hidden absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                  <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600 text-white mb-2">
+                    {project.category}
+                  </span>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-bold text-white">
+                      {project.title}
+                    </h3>
+                    <span className="flex items-center gap-1 text-blue-400 text-sm font-medium">
+                      Read More <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </div>
+
+                {/* Desktop Default View - Title Only at Bottom */}
+                <div className="hidden sm:block absolute inset-x-0 bottom-0 p-6 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
                   <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600/80 text-white mb-3">
                     {project.category}
                   </span>
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="text-xl lg:text-2xl font-bold text-white">
                     {project.title}
                   </h3>
                 </div>
 
-                {/* Hover View - Full Content */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                {/* Desktop Hover View - Full Content */}
+                <div className="hidden sm:flex absolute inset-0 p-6 flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                   {/* Top Section */}
                   <div>
                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-blue-600 text-white mb-4">
@@ -285,7 +301,10 @@ const Projects: React.FC = () => {
 
                       {/* Read More Button */}
                       <button
-                        onClick={() => setSelectedProject(project)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProject(project);
+                        }}
                         className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
                       >
                         Read More <ArrowRight size={16} />
@@ -314,7 +333,7 @@ const Projects: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-white dark:bg-gray-900 max-w-xl w-full rounded-2xl p-6 relative shadow-xl max-h-[90vh] overflow-y-auto"
+              className="bg-white dark:bg-gray-900 max-w-sm sm:max-w-md md:max-w-xl w-full mx-4 rounded-2xl p-5 sm:p-6 relative shadow-xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

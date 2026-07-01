@@ -79,8 +79,8 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-16 sm:py-20 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Let's Connect
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -177,9 +177,9 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl"
+            className="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl"
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Send a Message
             </h3>
             

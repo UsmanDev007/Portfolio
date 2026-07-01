@@ -30,8 +30,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <h3 className="text-2xl font-bold text-blue-400 mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-blue-400 mb-4">
               Muhammad Usman
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
             <nav className="space-y-2">
               {quickLinks.map((link, index) => (
                 <button
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
+            <h4 className="text-base sm:text-lg font-semibold mb-4">Get In Touch</h4>
             <div className="space-y-2 text-gray-300">
               <p>Osman.Wad69@gmail.com</p>
               <p>03086852008</p>

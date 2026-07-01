@@ -67,8 +67,8 @@ const Resume: React.FC = () => {
   ];
 
   return (
-    <section id="resume" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-6">
+    <section id="resume" className="py-16 sm:py-20 bg-gray-50 dark:bg-gray-800">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ const Resume: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Resume
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
@@ -124,7 +124,7 @@ const Resume: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative pl-8 border-l-2 border-blue-200 dark:border-blue-800"
+                  className="relative pl-6 sm:pl-8 border-l-2 border-blue-200 dark:border-blue-800"
                 >
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-blue-600 rounded-full"></div>
                   <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
@@ -229,7 +229,7 @@ const Resume: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8"
         >
           {[
             { number: "1+", label: "Years Experience" },
@@ -238,7 +238,7 @@ const Resume: React.FC = () => {
             { number: "6", label: "Certifications" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">

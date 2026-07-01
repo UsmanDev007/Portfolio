@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl"
         ></motion.div>
         <motion.div
           animate={{
@@ -40,11 +40,11 @@ const Hero: React.FC = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl"
         ></motion.div>
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 relative z-10">
         <div className="flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
             >
               Hi, I'm{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+              className="text-base sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
             >
              FullStack Developer with 1+ year of experience, specializing in React, Next.js, and TypeScript. Passionate about building scalable, performant, and user-focused web applications using modern UI systems, efficient state management, Prisma ORM, PostgreSQL, and MongoDB.
             </motion.p>
