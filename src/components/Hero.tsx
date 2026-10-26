@@ -1,159 +1,95 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
-const Hero: React.FC = () => {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, ArrowRight, Sparkles } from "lucide-react";
+import { HeroParallax } from "@/components/ui/hero-parallax";
+import { useProjectModal } from "@/components/ProjectModal";
+import { projects } from "@/data/projects";
+
+const HeroHeader: React.FC = () => {
+  const go = (href: string) => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900"></div>
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-1/4 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl"
-        ></motion.div>
-        <motion.div
-          animate={{
-            x: [0, -150, 0],
-            y: [0, 100, 0],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl"
-        ></motion.div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 relative z-10">
-        <div className="flex flex-col items-center justify-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl text-center"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6"
-            >
-              Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Muhammad Usman
-              </span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
-            >
-             FullStack Developer with 1+ year of experience, specializing in React, Next.js, and TypeScript. Passionate about building scalable, performant, and user-focused web applications using modern UI systems, efficient state management, Prisma ORM, PostgreSQL, and MongoDB.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12 justify-center"
-            >
-              <button
-                onClick={() => scrollToSection('#projects')}
-                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
-              >
-                View My Work
-              </button>
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-600 hover:text-white dark:hover:text-white transition-all duration-200"
-              >
-                Get In Touch
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex justify-center space-x-6"
-            >
-              <a
-                href="https://github.com/UsmanDev007"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-200"
-                aria-label="GitHub Profile"
-              >
-                <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/muhammad-osman69"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-200"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-              </a>
-              <a
-                href="mailto:Osman.Wad69@gmail.com"
-                className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-200"
-                aria-label="Email Contact"
-              >
-                <Mail className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-              </a>
-            </motion.div>
-          </motion.div>
-
-
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+    <div className="max-w-7xl relative mx-auto pt-16 md:pt-24 px-4 w-full left-0 top-0 text-center">
+      <motion.span
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="pill glass text-fg/90 mb-6"
       >
-        <button
-          onClick={() => scrollToSection('#about')}
-          className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-          aria-label="Scroll to About section"
-        >
-          <span className="text-sm mb-2">Scroll Down</span>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <ChevronDown className="h-6 w-6" />
-          </motion.div>
+        <Sparkles className="h-3.5 w-3.5 text-accent" /> Open to full-time roles &amp; B2B projects
+      </motion.span>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.7 }}
+        className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-fg leading-[1.05] tracking-tight"
+      >
+        Hi, I&apos;m Usman.
+        <br />
+        I build web products that <span className="text-accent">ship</span>
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25, duration: 0.7 }}
+        className="max-w-2xl mx-auto mt-6 text-base md:text-lg text-fg/70"
+      >
+        FullStack Developer with 2 years of experience in the MERN stack, Next.js and TypeScript. I join
+        software houses and product teams as a dependable engineer, and I deliver complete web
+        products for businesses as a B2B partner.
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.7 }}
+        className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center"
+      >
+        <button onClick={() => go("#work")} className="btn-royal">
+          Work With Me <ArrowRight className="h-4 w-4" />
+        </button>
+        <button onClick={() => go("#projects")} className="btn-ghost">
+          View My Work
         </button>
       </motion.div>
-    </section>
+
+      <div className="mt-8 flex justify-center gap-3">
+        {[
+          { href: "https://github.com/UsmanDev007", icon: Github, label: "GitHub Profile", ext: true },
+          { href: "https://www.linkedin.com/in/muhammad-osman69", icon: Linkedin, label: "LinkedIn Profile", ext: true },
+          { href: "mailto:Osman.Wad69@gmail.com", icon: Mail, label: "Email Contact", ext: false },
+        ].map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            {...(s.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            aria-label={s.label}
+            className="grid place-items-center w-10 h-10 rounded-full glass text-fg hover:bg-royal transition-colors"
+          >
+            <s.icon className="h-4 w-4" />
+          </a>
+        ))}
+      </div>
+    </div>
   );
+};
+
+const Hero: React.FC = () => {
+  const { open } = useProjectModal();
+
+  // Show the client work first, then the rest, in the parallax rows
+  const items = projects.map((p) => ({
+    title: p.title,
+    category: p.category,
+    thumbnail: p.image,
+    isVideo: !!p.video,
+    onSelect: () => open(p),
+  }));
+
+  return <HeroParallax header={<HeroHeader />} products={items} />;
 };
 
 export default Hero;

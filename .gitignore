@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.next
+.env.local
+.env*.local
+next-env.d.ts
+tsconfig.tsbuildinfo

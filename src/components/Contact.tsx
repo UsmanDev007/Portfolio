@@ -1,310 +1,211 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
+  topic: string;
   name: string;
   email: string;
   subject: string;
   message: string;
 }
 
+const contactInfo = [
+  { icon: Mail, label: "Email", value: "Osman.Wad69@gmail.com", href: "mailto:Osman.Wad69@gmail.com" },
+  { icon: Phone, label: "Phone", value: "03086852008", href: "tel:+923086852008" },
+  { icon: MapPin, label: "Location", value: "Rawalpindi, Pakistan", href: "#contact" },
+];
+
+const socialLinks = [
+  { icon: Github, label: "GitHub", href: "https://github.com/UsmanDev007" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/muhammad-osman69" },
+];
+
 const Contact: React.FC = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorDetail, setErrorDetail] = useState("");
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setStatus("idle");
+    setErrorDetail("");
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // Next.js inlines these at build time, so a missing value means .env.local wasn't loaded
+    if (!serviceId || !templateId || !publicKey) {
+      setErrorDetail("Email isn't configured: the NEXT_PUBLIC_EMAILJS_* variables are missing. Restart the dev server after editing .env.local.");
+      setStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: data.name,
           from_email: data.email,
-          subject: data.subject,
+          subject: `[${data.topic}] ${data.subject}`,
           message: data.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        publicKey
       );
-      setSubmitStatus('success');
+      setStatus("success");
       reset();
     } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSubmitStatus('error');
+      console.error("EmailJS Error:", error);
+      // EmailJS rejects with { status, text }, for example 412 for a bad service or template id
+      const e = error as { status?: number; text?: string };
+      setErrorDetail(e?.text ? `EmailJS says: ${e.text}${e.status ? ` (${e.status})` : ""}` : "");
+      setStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'Osman.Wad69@gmail.com',
-      href: 'mailto:Osman.Wad69@gmail.com'
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '03086852008',
-      href: 'tel:+923086852008'
-    },
-    {
-        icon: MapPin,
-      label: 'Location',
-      value: 'Rawalpindi, Pakistan',
-      href: '#'
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      href: 'https://github.com/UsmanDev007',
-      color: 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/muhammad-osman69',
-      color: 'text-blue-600 hover:text-blue-700'
-    }
-  ];
+  const label = "block text-xs font-semibold uppercase tracking-wider text-fg/70 mb-2";
 
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Get In Touch
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
+    <section id="contact" className="hero-bg relative py-20 sm:py-28 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 relative">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ duration: 0.7 }}
           >
-            <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Let's Connect
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                I'm always excited to discuss new opportunities, whether it's a 
-                freelance project, full-time position, or just a chat about web development. 
-                Feel free to reach out through any of the channels below.
-              </p>
-            </div>
+            <span className="pill glass text-fg/90 mb-5">Contact</span>
+            <h2 className="text-4xl sm:text-6xl font-extrabold text-fg leading-[1.05] mb-5">
+              Hiring or have a <span className="text-accent">project</span>?
+            </h2>
+            <p className="text-fg/70 mb-8 max-w-md leading-relaxed">
+              Whether you&apos;re a software house or product team looking for a full-time developer, or a
+              business that needs a web product built, tell me a little and I&apos;ll get back to you.
+            </p>
 
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 group"
-                >
-                  <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors duration-200">
-                    <info.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {info.label}
-                    </p>
-                    <p className="text-lg font-medium text-gray-900 dark:text-white">
-                      {info.value}
-                    </p>
-                  </div>
-                </motion.a>
+            <div className="space-y-3 mb-8">
+              {contactInfo.map((info) => (
+                <a key={info.label} href={info.href} className="glass rounded-2xl flex items-center gap-4 p-4 hover:bg-fg/15 transition-colors">
+                  <span className="grid place-items-center w-11 h-11 rounded-full bg-royal text-white">
+                    <info.icon className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-fg/60">{info.label}</span>
+                    <span className="block font-semibold text-fg">{info.value}</span>
+                  </span>
+                </a>
               ))}
             </div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="pt-8"
-            >
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Follow Me
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transform hover:-translate-y-1 transition-all duration-200 ${social.color}`}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="h-6 w-6" />
-                  </a>
-                ))}
-              </div>
-            </motion.div>
+            <div className="flex gap-3">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="grid place-items-center w-11 h-11 rounded-full glass text-fg hover:bg-royal transition-colors"
+                >
+                  <s.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="glass rounded-3xl p-6 sm:p-8"
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Send a Message
-            </h3>
-            
-            {submitStatus === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg flex items-center gap-2"
-              >
+            <h3 className="text-2xl font-bold text-fg mb-6">Send a Message</h3>
+
+            {status === "success" && (
+              <div className="mb-6 p-4 rounded-xl bg-green-500/15 border border-green-400/40 text-fg flex items-center gap-2">
                 <CheckCircle className="h-5 w-5" />
-                <span>Message sent successfully! I'll get back to you soon.</span>
-              </motion.div>
+                <span>Message sent successfully! I&apos;ll get back to you soon.</span>
+              </div>
             )}
-
-            {submitStatus === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-6 p-4 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-lg flex items-center gap-2"
-              >
+            {status === "error" && (
+              <div className="mb-6 p-4 rounded-xl bg-red-500/15 border border-red-400/40 text-fg flex items-center gap-2">
                 <AlertCircle className="h-5 w-5" />
-                <span>Failed to send message. Please try again or email me directly.</span>
-              </motion.div>
+                <span>
+                  Failed to send message. Please try again or email me directly.
+                  {errorDetail && <span className="block mt-1 text-xs opacity-80">{errorDetail}</span>}
+                </span>
+              </div>
             )}
-            
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    {...register('name', { required: 'Name is required' })}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                    placeholder="Your Name"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                      {errors.name.message}
-                    </p>
-                  )}
-                </div>
 
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email *
-                  </label>
+                  <label htmlFor="name" className={label}>Name *</label>
+                  <input id="name" type="text" placeholder="Your Name" className="input-nav" {...register("name", { required: "Name is required" })} />
+                  {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
+                </div>
+                <div>
+                  <label htmlFor="email" className={label}>Email *</label>
                   <input
-                    type="email"
                     id="email"
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    type="email"
                     placeholder="your.email@example.com"
+                    className="input-nav"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Invalid email address" },
+                    })}
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                      {errors.email.message}
-                    </p>
-                  )}
+                  {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>}
                 </div>
               </div>
-
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  {...register('subject', { required: 'Subject is required' })}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                  placeholder="Project Inquiry"
-                />
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.subject.message}
-                  </p>
-                )}
+                <label htmlFor="topic" className={label}>I&apos;m reaching out about *</label>
+                <select id="topic" className="input-nav" defaultValue="Full-time role" {...register("topic", { required: true })}>
+                  <option className="text-black" value="Full-time role">A full-time role</option>
+                  <option className="text-black" value="B2B project">A B2B / business project</option>
+                  <option className="text-black" value="Contract work">Contract or freelance work</option>
+                  <option className="text-black" value="Something else">Something else</option>
+                </select>
               </div>
-
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  {...register('message', { required: 'Message is required' })}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none"
-                  placeholder="Tell me about your project or just say hello!"
-                ></textarea>
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.message.message}
-                  </p>
-                )}
+                <label htmlFor="subject" className={label}>Subject *</label>
+                <input id="subject" type="text" placeholder="Frontend role / Project inquiry" className="input-nav" {...register("subject", { required: "Subject is required" })} />
+                {errors.subject && <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>}
               </div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 disabled:cursor-not-allowed"
-              >
+              <div>
+                <label htmlFor="message" className={label}>Message *</label>
+                <textarea id="message" rows={5} placeholder="Tell me about your project or just say hello!" className="input-nav resize-none" {...register("message", { required: "Message is required" })} />
+                {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>}
+              </div>
+              <button type="submit" disabled={isSubmitting} className="btn-royal w-full !py-4 disabled:opacity-60 disabled:cursor-not-allowed">
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    <span>Sending...</span>
+                    <Loader2 className="h-5 w-5 animate-spin" /> Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="h-5 w-5" />
-                    <span>Send Message</span>
+                    <Send className="h-5 w-5" /> Send Message
                   </>
                 )}
-              </motion.button>
+              </button>
             </form>
           </motion.div>
         </div>
